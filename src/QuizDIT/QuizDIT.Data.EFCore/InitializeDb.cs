@@ -9,11 +9,10 @@ namespace QuizDIT.Data.EFCore
     {
         public static void LoadQuiz(QuizDITDbContext context)
         {
-            if (!context.Quizs.Any())
+            if (!context.Quiz.Any())
             {
-                context.Quizs.Add(new Domain.Quiz()
+                context.Quiz.Add(new Domain.Quiz()
                 {
-                    QuizId = 1,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -31,11 +30,10 @@ namespace QuizDIT.Data.EFCore
 
         public static void LoadQuestions(QuizDITDbContext context)
         {
-            if (!context.Questions.Any())
+            if (!context.Question.Any())
             {
-                context.Questions.Add(new Domain.Question()
+                context.Question.Add(new Domain.Question()
                 {
-                    QuestionId = 1,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -49,9 +47,8 @@ namespace QuizDIT.Data.EFCore
                     Penalty = -1
 
                 });
-                context.Questions.Add(new Domain.Question()
+                context.Question.Add(new Domain.Question()
                 {
-                    QuestionId = 2,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -65,9 +62,8 @@ namespace QuizDIT.Data.EFCore
                     Penalty = -1
 
                 });
-                context.Questions.Add(new Domain.Question()
+                context.Question.Add(new Domain.Question()
                 {
-                    QuestionId = 3,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -82,9 +78,8 @@ namespace QuizDIT.Data.EFCore
 
                 });
 
-                context.Questions.Add(new Domain.Question()
+                context.Question.Add(new Domain.Question()
                 {
-                    QuestionId = 4,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -99,9 +94,8 @@ namespace QuizDIT.Data.EFCore
 
                 });
 
-                context.Questions.Add(new Domain.Question()
+                context.Question.Add(new Domain.Question()
                 {
-                    QuestionId = 5,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -126,7 +120,6 @@ namespace QuizDIT.Data.EFCore
             {
                 context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
                 {
-                    QuizQuestionMappingId = 1,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -139,7 +132,6 @@ namespace QuizDIT.Data.EFCore
 
                 context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
                 {
-                    QuizQuestionMappingId = 2,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -151,7 +143,6 @@ namespace QuizDIT.Data.EFCore
                 });
                 context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
                 {
-                    QuizQuestionMappingId = 3,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -164,7 +155,6 @@ namespace QuizDIT.Data.EFCore
 
                 context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
                 {
-                    QuizQuestionMappingId = 4,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -176,7 +166,6 @@ namespace QuizDIT.Data.EFCore
                 });
                 context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
                 {
-                    QuizQuestionMappingId = 5,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -194,11 +183,10 @@ namespace QuizDIT.Data.EFCore
 
         public static void LoadAnswers(QuizDITDbContext context)
         {
-            if (!context.Answers.Any())
+            if (!context.Answer.Any())
             {
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 1,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -207,9 +195,8 @@ namespace QuizDIT.Data.EFCore
                     AnswerDescription = "Value types"
                 });
 
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 2,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -217,9 +204,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "Reference types"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 3,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -228,9 +214,8 @@ namespace QuizDIT.Data.EFCore
                     AnswerDescription = "Pointer types"
                 });
 
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 4,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -239,9 +224,8 @@ namespace QuizDIT.Data.EFCore
                     AnswerDescription = "All of the above"
                 });
 
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 5,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -250,9 +234,8 @@ namespace QuizDIT.Data.EFCore
                     AnswerDescription = "true"
                 });
 
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 6,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -261,9 +244,8 @@ namespace QuizDIT.Data.EFCore
                     AnswerDescription = "false"
                 });
 
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 7,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -272,9 +254,8 @@ namespace QuizDIT.Data.EFCore
                     AnswerDescription = "ToDecimal"
                 });
 
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 8,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -282,9 +263,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "ToDouble"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 9,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -292,9 +272,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "ToInt16"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 10,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -302,9 +281,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "ToInt32"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 11,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -313,9 +291,8 @@ namespace QuizDIT.Data.EFCore
                     AnswerDescription = "sizeof"
                 });
 
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 12,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -323,9 +300,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "typeof"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 13,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -333,9 +309,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "&"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 14,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -343,9 +318,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "*"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 15,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -353,9 +327,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "Public"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 16,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -363,9 +336,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "Private"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 17,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -373,9 +345,8 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     AnswerDescription = "Protected"
                 });
-                context.Answers.Add(new Domain.Answer()
+                context.Answer.Add(new Domain.Answer()
                 {
-                    AnswerId = 18,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -389,11 +360,10 @@ namespace QuizDIT.Data.EFCore
 
         public static void LoadQuestionAnswerMappings(QuizDITDbContext context)
         {
-            if (!context.QuestionAnswerMappings.Any())
+            if (!context.QuestionAnswerMapping.Any())
             {
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 1,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -404,9 +374,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = true,
                     OrderId = 1,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 2,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -417,9 +386,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 2,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 3,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -430,9 +398,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 3,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 4,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -443,9 +410,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 4,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 5,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -456,9 +422,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 1,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 6,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -469,9 +434,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 2,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 7,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -482,9 +446,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 1,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 8,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -495,9 +458,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 2,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 9,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -509,9 +471,8 @@ namespace QuizDIT.Data.EFCore
                     OrderId = 3,
                 });
 
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 10,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -522,9 +483,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 4,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 11,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -535,9 +495,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 1,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 12,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -548,9 +507,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 2,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 13,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -561,9 +519,8 @@ namespace QuizDIT.Data.EFCore
                     IsCorrect = false,
                     OrderId = 3,
                 });
-                context.QuestionAnswerMappings.Add(new Domain.QuestionAnswerMapping()
+                context.QuestionAnswerMapping.Add(new Domain.QuestionAnswerMapping()
                 {
-                    QuestionAnswerMappingId = 14,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -580,11 +537,10 @@ namespace QuizDIT.Data.EFCore
 
         public static void LoadUsers(QuizDITDbContext context)
         {
-            if (!context.Users.Any())
+            if (!context.User.Any())
             {
-                context.Users.Add(new Domain.User()
+                context.User.Add(new Domain.User()
                 {
-                    UserId = 1,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -593,9 +549,8 @@ namespace QuizDIT.Data.EFCore
                     UserEmail = "singhal.s01@gmail.com",
                     UserName = "Anshul Singhal"
                 });
-                context.Users.Add(new Domain.User()
+                context.User.Add(new Domain.User()
                 {
-                    UserId = 2,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -604,9 +559,8 @@ namespace QuizDIT.Data.EFCore
                     UserEmail = "tn.prashant@gmail.com",
                     UserName = "Prashanth"
                 });
-                context.Users.Add(new Domain.User()
+                context.User.Add(new Domain.User()
                 {
-                    UserId = 3,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -615,16 +569,16 @@ namespace QuizDIT.Data.EFCore
                     UserEmail = "shivendra.aggarwal@gmail.com",
                     UserName = "Shivendra "
                 });
+                context.SaveChanges();
             }
         }
 
         public static void LoadUserQuiz(QuizDITDbContext context)
         {
-            if (!context.UserQuizes.Any())
+            if (!context.UserQuiz.Any())
             {
-                context.UserQuizes.Add(new Domain.UserQuiz()
+                context.UserQuiz.Add(new Domain.UserQuiz()
                 {
-                    UserQuizId = 1,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -634,9 +588,8 @@ namespace QuizDIT.Data.EFCore
                     QuizId = 1
                 });
 
-                context.UserQuizes.Add(new Domain.UserQuiz()
+                context.UserQuiz.Add(new Domain.UserQuiz()
                 {
-                    UserQuizId = 2,
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
                     IsDeleted = false,
@@ -645,17 +598,8 @@ namespace QuizDIT.Data.EFCore
                     UserId = 2,
                     QuizId = 1
                 });
-                context.UserQuizes.Add(new Domain.UserQuiz()
-                {
-                    UserQuizId = 3,
-                    CreatedBy = "Admin",
-                    CreatedDateTime = System.DateTime.Now,
-                    IsDeleted = false,
-                    ModifiedBy = "Admin",
-                    ModifiedDateTime = System.DateTime.Now,
-                    UserId = 3,
-                    QuizId = 1
-                });
+                
+                context.SaveChanges();
             }
         }
     }

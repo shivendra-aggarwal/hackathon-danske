@@ -12,13 +12,13 @@ namespace QuizDIT.Data.EFCore
 
         }
 
-        public DbSet<Quiz> Quizs { get; set; }
-        public DbSet<Question> Questions { get; set; }
-        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Quiz> Quiz { get; set; }
+        public DbSet<Question> Question { get; set; }
+        public DbSet<Answer> Answer { get; set; }
         public DbSet<QuizQuestionMapping> QuizQuestionMappings { get; set; }
-        public DbSet<QuestionAnswerMapping> QuestionAnswerMappings { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserQuiz> UserQuizes { get; set; }
+        public DbSet<QuestionAnswerMapping> QuestionAnswerMapping { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<UserQuiz> UserQuiz { get; set; }
         public DbSet<UserQuizResponse> UserQuizResponses { get; set; }
 
 

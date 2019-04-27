@@ -36,7 +36,7 @@ namespace QuizDIT.API
             });
 
             services.AddDbContext<QuizDITDbContext>(options =>
-                options.UseInMemoryDatabase("Data Source=QuizDIT.db"));
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddMvc();
 
             services.AddAutoMapper();
@@ -66,9 +66,10 @@ namespace QuizDIT.API
             InitializeDb.LoadQuiz(context);
             InitializeDb.LoadAnswers(context);
             InitializeDb.LoadQuestions(context);
-            InitializeDb.LoadQuestionMappings(context);
+            //InitializeDb.LoadQuestionMappings(context);
             InitializeDb.LoadQuestionAnswerMappings(context);
-
+            InitializeDb.LoadUsers(context);
+            InitializeDb.LoadUserQuiz(context);
         }
     }
 }
