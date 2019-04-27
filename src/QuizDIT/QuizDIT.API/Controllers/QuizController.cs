@@ -19,17 +19,23 @@ namespace QuizDIT.API.Controllers
             _context = context;
         }
         [HttpGet]
-        public IEnumerable<QuizDTO> Get()
+        public IEnumerable<QuizDTO> Get(string userEmail)
         {
-            var quizes = _context.Quizs.ToList();
-            return Mapper.Map<IEnumerable<Quiz>, IEnumerable<QuizDTO>>(quizes.AsEnumerable());
+            //var quizes = from q in _context.Quizs
+            //             join d in _context.UserQuizes on q.QuizId equals d.QuizId
+            //             join u in _context.Users on d.UserId equals u.UserId
+            //             where u.UserEmail == userEmail
+            //             select q;
+            //var result =  Mapper.Map<IEnumerable<Quiz>, IEnumerable<QuizDTO>>(quizes.AsEnumerable()).ToList();
+            //result.ToList().ForEach(r => r.IsStart = true);
+            return null;
         }
 
         [Route("quiz/{quizid}/question")]
         [HttpGet]
         public QuestionDTO Get(int quizid)
         {
-            var question = _context.Questions.FirstOrDefault();
+            var question = _context.Question.FirstOrDefault();
             return Mapper.Map<Question, QuestionDTO>(question);
         }
 

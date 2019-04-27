@@ -27,6 +27,9 @@ namespace QuizDIT.Domain
 
         public string QuizPassword { get; set; }
 
+        public bool IsStart { get; set; }
+        public bool IsRegistered { get; set; }
+
         public ICollection<QuizQuestionMappingDTO> QuizQuestionMappings { get; set; }
     }
 }

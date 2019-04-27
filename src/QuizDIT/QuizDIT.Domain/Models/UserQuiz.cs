@@ -14,9 +14,7 @@ namespace QuizDIT.Domain
 
         public int UserQuizId { get; set; }
 
-        public DateTime RegisterationDateTime { get; set; }
-
-        public DateTime StartDateTime { get; set; }
+        public DateTime UserRegisterDate { get; set; }
 
         public int UserId { get; set; }
 
