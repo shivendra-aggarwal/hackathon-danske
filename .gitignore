@@ -15,11 +15,8 @@
 /$tf
 /$tf
 
-/src/ATS/packages
+/src/QuizDIT/packages
 
-/src/ATS/.vs
+/src/QuizDIT/.vs
 
-src/ATS/Airlines/API.GoAir/API.GoAir.csproj.user
-src/ATS/ATS.Application/ATS.Web/ATS.UI.csproj.user
-src/ATS/ATS.Application/ATS.DataAccess/ATS.DataAccess.csproj.user
-src/ATS/ATS.Application/ATS.UI/ATS.UI.csproj.user
+src/QuizDIT/QuizDIT.API/QuizDIT.API.csproj.user
