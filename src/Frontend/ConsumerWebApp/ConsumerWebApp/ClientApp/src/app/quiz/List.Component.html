@@ -1,0 +1,10 @@
+
+<div *ngIf="quizList && quizList.length>0">
+  <ng2-smart-table [settings]="settings" [source]="source"
+                  >
+  </ng2-smart-table>
+</div>
+<div *ngIf="!noData">
+  <span> NO Quiz Data Found</span>
+</div>
+
