@@ -19,6 +19,7 @@ namespace QuizDIT.API.Controllers
         {
             _context = context;
         }
+
         [HttpGet]
         public IEnumerable<QuizDTO> Get(string userEmail)
         {
@@ -36,7 +37,7 @@ namespace QuizDIT.API.Controllers
                     r.IsRegistered = true;
                 }
 
-                r.Duration = r.EndTime.Subtract(r.StartTime).Minutes;
+                r.Duration = 60;
             }
             );
             return result;
@@ -84,6 +85,26 @@ namespace QuizDIT.API.Controllers
             }
 
             return null;
+        }
+
+        [HttpPost("RegisterQuiz")]
+        public IActionResult RegisterQuiz(string userEmail, int quizid)
+        {
+            var user = _context.User.FirstOrDefault(u => u.UserEmail == userEmail);
+            var quiz = _context.Quiz.FirstOrDefault(q => q.QuizId == quizid);
+
+            var userQuiz = new UserQuiz();
+            userQuiz.QuizId = quiz.QuizId;
+            userQuiz.UserId = user.UserId;
+            userQuiz.UserRegisterDate = DateTime.Now;
+            userQuiz.CreatedBy = "Admin";
+            userQuiz.ModifiedBy = "Admin";
+            userQuiz.CreatedDateTime = DateTime.Now;
+            userQuiz.ModifiedDateTime = DateTime.Now;
+            _context.UserQuiz.Add(userQuiz);
+            _context.SaveChanges();
+
+            return Ok();
         }
 
 
