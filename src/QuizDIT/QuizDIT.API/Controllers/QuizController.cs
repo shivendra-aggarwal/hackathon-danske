@@ -152,6 +152,8 @@ namespace QuizDIT.API.Controllers
             {
 
                 p.Produce("testtopic", new Message<Null, string> { Value = JsonConvert.SerializeObject(new QuizQueResponse() { QuizId = quizid, QuestionId = questionid, UserId = userid, ResponseId = responseid } )}, handler);
+                // wait for up to 10 seconds for any inflight messages to be delivered.
+                p.Flush(TimeSpan.FromSeconds(10));
             }
 
             return Ok();

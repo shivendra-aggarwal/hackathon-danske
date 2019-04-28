@@ -26,7 +26,7 @@ export class QuestionComponent implements OnInit {
     questionTitle: "",
     questionType: "",
     quizId: 0,
-    answerList: [],
+    answers: [],
     selectedAnswer: 0
 
   };
@@ -61,18 +61,18 @@ export class QuestionComponent implements OnInit {
     this.alertService.startLoadingMessage(this.caption, "Loading");
     this.service.get(quizId, email, currentQuestion)
       .subscribe(
-        question => {
+      question => {
           this.Question = {
-            award: question[0].award,
-            duration: question[0].duration,
-            penalty: question[0].penalty,
-            questionCode: question[0].questionCode,
-            questionDescription: question[0].questionDescription,
-            questionId: question[0].questionId,
-            questionTitle: question[0].questionTitle,
-            questionType: question[0].questionType,
-            quizId: question[0].quizId,
-            answerList: question[0].answerList,
+            award: question.award,
+            duration: question.duration,
+            penalty: question.penalty,
+            questionCode: question.questionCode,
+            questionDescription: question.questionDescription,
+            questionId: question.questionId,
+            questionTitle: question.questionTitle,
+            questionType: question.questionType,
+            quizId: question.quizId,
+            answers: question.answers,
             selectedAnswer: 0
           }
 

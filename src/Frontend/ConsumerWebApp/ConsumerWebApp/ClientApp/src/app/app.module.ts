@@ -61,7 +61,7 @@ import { DataViewButtonComponent } from './component/dataview-button.component';
 export class AppModule { }
 
 export function getBaseUrl() {
-  return document.getElementsByTagName('base')[0].href;
+  return "https://localhost:44301/";//document.getElementsByTagName('base')[0].href;
 }
 
 export function getCurrentUser() {

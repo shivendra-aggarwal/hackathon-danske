@@ -29,7 +29,7 @@ export class DataViewButtonComponent implements ViewCell, OnInit {
       this.renderValue = "Quiz Over";
       this.QuizOver = true;
     } else if (currentDate >= startDate && currentDate < endDate) {
-
+      this.QuizOver = false;
       if (this.rowData.isRegistered) {
         this.renderValue = "Start";
       }
@@ -38,6 +38,11 @@ export class DataViewButtonComponent implements ViewCell, OnInit {
       }
 
     }
+    else if (currentDate < startDate)
+      if (this.rowData.isRegistered) {
+        this.renderValue = "Already Registered";
+        this.QuizOver = true;
+      }
     else
       this.renderValue = "Register";
   }
@@ -53,16 +58,17 @@ export class DataViewButtonComponent implements ViewCell, OnInit {
       //api call for Register
       this.service.registerUser(quiz)
         .subscribe(quiz => {
-          if (quiz.isRegistered) {
+          //if (quiz.isRegistered) {
             this.renderValue = "Start";
-            alert(`${quiz.quizName} Registered Successfully!`);
-          }
-          else if (quiz.isStart) {
-            this.renderValue = "In-Progress";
-            //move to Question Page
-            //this.router.navigate(['/question', { qid: quiz.quizId, uid: `${quiz.email}` }]);
-            window.location.href = './question?qid=' + quiz.quizId + '&uid=' + quiz.email + '&title=' + quiz.quizName + '&duration=' + quiz.duration;
-          }
+            //alert(`${quiz.quizName} Registered Successfully!`);
+            window.location.href = './quiz';
+          //}
+          //else if (quiz.isStart) {
+          //  this.renderValue = "In-Progress";
+          //  //move to Question Page
+          //  //this.router.navigate(['/question', { qid: quiz.quizId, uid: `${quiz.email}` }]);
+          //  window.location.href = './question?qid=' + quiz.quizId + '&uid=' + quiz.email + '&title=' + quiz.quizName + '&duration=' + quiz.duration;
+          //}
         },
           error => this.errorMessage = <any>error
         );
@@ -71,13 +77,13 @@ export class DataViewButtonComponent implements ViewCell, OnInit {
       //api call for Start
       if (!quiz.isStart) {
         this.service.startQuiz(quiz)
-          .subscribe(quiz => {
-            if (quiz.isStart) {
+          .subscribe(q => {
+           // if (quiz.isStart) {
               this.renderValue = "In-Progress";
 
               //this.router.navigate(['/question?qid=' + quiz.quizId + '&uid=' + quiz.email + '']);
               window.location.href = './question?qid=' + quiz.quizId + '&uid=' + quiz.email + '&title=' + quiz.quizName + '&duration=' + quiz.duration;
-            }
+           // }
           },
             error => this.errorMessage = <any>error
           );

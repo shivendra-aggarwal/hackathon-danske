@@ -13,21 +13,22 @@ export class QuizService {
 
   }
 
+  public email: string = localStorage.getItem("email");
   get(): Observable<IQuiz[]> {
-    return this.httpclient.get<IQuiz[]>(this.baseUrl + 'api/SampleData/quiz')
+    return this.httpclient.get<IQuiz[]>(this.baseUrl + 'v1/Quiz?userEmail=' + this.email+ '')
       .do(data => console.log('Quiz Data All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
   registerUser(quiz: IQuiz): Observable<IQuiz> {
-    return this.httpclient.post<IQuiz>(this.baseUrl + 'api/SampleData/register', quiz)
+    return this.httpclient.post<IQuiz>(this.baseUrl + 'v1/Quiz/RegisterQuiz?userEmail=' + this.email + '&quizid=' + quiz.quizId, null)
       .do(data => console.log('Quiz Post: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
   startQuiz(quiz: IQuiz): Observable<IQuiz> {
-    return this.httpclient.put<IQuiz>(this.baseUrl + 'api/SampleData/startQuiz', quiz)
-      .do(data => console.log('Quiz Post: ' + JSON.stringify(data)))
+    return this.httpclient.put<IQuiz>(this.baseUrl + 'v1/Quiz/StartQuiz?userEmail=' + this.email + '&quizid=' + quiz.quizId, null)
+      .do(data => console.log('Quiz Put: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 

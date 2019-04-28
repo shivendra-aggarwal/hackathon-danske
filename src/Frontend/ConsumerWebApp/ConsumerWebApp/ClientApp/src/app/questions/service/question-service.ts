@@ -12,15 +12,15 @@ export class QuestionService {
   constructor(@Inject('BASE_URL') private baseUrl: string, private httpclient: HttpClient) {
 
   }
-
+  public userid: number = +localStorage.getItem("userId");
   get(quizId: number, email: string, questionId: number): Observable<IQuestion> {
-    return this.httpclient.get<IQuestion>(this.baseUrl + 'api/SampleData/question?QuizId=' + quizId + '&Email=' + email + '&QuestionId=' + questionId)
+    return this.httpclient.get<IQuestion>(this.baseUrl + 'v1/Quiz/quiz/' + quizId + '/user/' + this.userid +'/question/' + questionId)
       .do(data => console.log('Question Data All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
   postResponse(question: IQuestion): Observable<IQuestion> {
-    return this.httpclient.post<IQuestion>(this.baseUrl + 'api/SampleData/postQuestion', question)
+    return this.httpclient.post<IQuestion>(this.baseUrl + 'v1/Quiz/user/' + this.userid + '/quiz/' + question.quizId + '/question/' + question.questionId + '/response/' + question.selectedAnswer,null)
       .do(data => console.log('Question Post: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }

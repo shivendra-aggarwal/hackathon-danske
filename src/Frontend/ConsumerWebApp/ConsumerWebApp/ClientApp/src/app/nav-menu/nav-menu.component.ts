@@ -13,6 +13,7 @@ export class NavMenuComponent implements OnInit {
     if (localStorage.getItem("email") != null) {
       this.userloggedIn = true;
       this.userEmail = localStorage.getItem("email");
+
     }
     else {
       this.userloggedIn = false;
@@ -34,6 +35,12 @@ export class NavMenuComponent implements OnInit {
       if (this.userEmail && this.userEmail != '') {
         localStorage.setItem("email", this.userEmail);
         this.userloggedIn = true;
+        if (this.userEmail == 'singhal.s01@gmail.com')
+          localStorage.setItem("userId", "1");
+        if (this.userEmail == 'tn.prashant@gmail.com')
+          localStorage.setItem("userId", "2");
+        if (this.userEmail == 'shivendra.aggarwal@gmail.com')
+          localStorage.setItem("userId", "3");
       }
       this.displayLogin = false;
       
@@ -44,6 +51,7 @@ export class NavMenuComponent implements OnInit {
   }
   logout() {
     localStorage.removeItem('email');
+    localStorage.removeItem("userId");
     this.userloggedIn = false;
     this.userEmail = "";
   }

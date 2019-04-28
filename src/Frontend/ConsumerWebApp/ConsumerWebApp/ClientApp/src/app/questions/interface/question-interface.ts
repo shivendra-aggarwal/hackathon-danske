@@ -10,6 +10,6 @@ export interface IQuestion {
   award: number;
   penalty: number;
   questionType: string;
-  answerList: IAnswer[];
+  answers: IAnswer[];
   selectedAnswer: number;
 }
