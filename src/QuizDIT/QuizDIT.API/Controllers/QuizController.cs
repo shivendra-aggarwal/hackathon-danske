@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QuizDIT.Data.EFCore;
 using QuizDIT.Domain;
+using QuizQueResponseProducer;
 
 namespace QuizDIT.API.Controllers
 {
@@ -32,7 +33,7 @@ namespace QuizDIT.API.Controllers
             //                 where d.user
             var result = Mapper.Map<IEnumerable<Quiz>, IEnumerable<QuizDTO>>(quizes.AsEnumerable()).ToList();
             result.ToList().ForEach(r => r.IsStart = true);
-            return null;
+            return result;
         }
 
         [Route("quiz/{quizid}/user/{userId}/question/{questionid}")]
@@ -79,10 +80,14 @@ namespace QuizDIT.API.Controllers
             return null;
         }
 
-        // POST api/values
+        
+        [Route("user/{userid}/quiz/{quizid}/question/{questionid}/response/{responseid}")]
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult PublishMessage(int userid, int quizid, int questionid, int responseid = 0)
         {
+            ResponseProducer.ProduceQuizQuestionReponse(userid, quizid, questionid, responseid);
+
+            return Ok();
         }
 
         // PUT api/values/5

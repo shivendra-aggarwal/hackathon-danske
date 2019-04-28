@@ -47,13 +47,6 @@ namespace QuizDIT.API.Controllers
             return Ok();
         }
 
-        [Route("user/{userid}/quiz/{quizid}/question/{questionid}/response/{responseid}")]
-        [HttpPost]
-        public IActionResult PublishMessage(int userid, int quizid, int questionid, int responseid)
-        {
-            ResponseProducer.ProduceQuizQuestionReponse(userid, quizid, questionid, responseid);
-            
-            return Ok();
-        }
+        
     }
 }
