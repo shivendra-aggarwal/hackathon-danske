@@ -66,7 +66,7 @@ namespace QuizDIT.API
             InitializeDb.LoadQuiz(context);
             InitializeDb.LoadAnswers(context);
             InitializeDb.LoadQuestions(context);
-            //InitializeDb.LoadQuestionMappings(context);
+            InitializeDb.LoadQuestionMappings(context);
             InitializeDb.LoadQuestionAnswerMappings(context);
             InitializeDb.LoadUsers(context);
             InitializeDb.LoadUserQuiz(context);

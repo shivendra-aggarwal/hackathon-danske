@@ -11,15 +11,18 @@ namespace QuizDIT.Domain
         {
             QuestionAnswerMappings = new HashSet<QuestionAnswerMappingDTO>();
             QuizQuestionMappings = new HashSet<QuizQuestionMappingDTO>();
+            Answers = new HashSet<AnswerDTO>();
         }
         public int QuestionId { get; set; }
         public string QuestionTitle { get; set; }
         public string QuestionDescription { get; set; }
         public string QuestionCode { get; set; }
         public int Duration { get; set; }
-        //public QuestionType QuestionType { get; set; }
+        public string QuestionType { get; set; }
         public int Award { get; set; }
         public int Penalty { get; set; }
+
+        public ICollection<AnswerDTO> Answers { get; set; }
 
         public ICollection<QuestionAnswerMappingDTO> QuestionAnswerMappings { get; set; }
 
