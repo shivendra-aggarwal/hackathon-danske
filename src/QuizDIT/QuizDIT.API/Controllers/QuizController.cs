@@ -42,7 +42,7 @@ namespace QuizDIT.API.Controllers
                     r.IsRegistered = true;
                     r.IsStart = quizes.FirstOrDefault(q => q.QuizId == r.QuizId).IsStart;
                 }
-                
+
                 r.Duration = 60;
             }
             );
@@ -77,16 +77,20 @@ namespace QuizDIT.API.Controllers
                 }
 
                 var questionDTO = Mapper.Map<Question, QuestionDTO>(question);
-                questionDTO.Answers = (from m in _context.QuestionAnswerMapping
-                                       join a in _context.Answer on m.AnswerId equals a.AnswerId
-                                       where m.QuestionId == questionDTO.QuestionId
-                                       select new AnswerDTO()
-                                       {
-                                           AnswerId = a.AnswerId,
-                                           AnswerDescription = a.AnswerDescription
-                                       }).ToList();
+                if (questionDTO != null)
+                {
+                    questionDTO.Answers = (from m in _context.QuestionAnswerMapping
+                                           join a in _context.Answer on m.AnswerId equals a.AnswerId
+                                           where m.QuestionId == questionDTO.QuestionId
+                                           select new AnswerDTO()
+                                           {
+                                               AnswerId = a.AnswerId,
+                                               AnswerDescription = a.AnswerDescription
+                                           }).ToList();
 
-                return questionDTO;
+                    return questionDTO;
+                }
+
 
             }
 
@@ -118,9 +122,9 @@ namespace QuizDIT.API.Controllers
         public IActionResult StartQuiz(string userEmail, int quizid)
         {
             var userQuiz = (from q in _context.UserQuiz
-                       join d in _context.User on q.UserId equals d.UserId
-                       where d.UserEmail == userEmail && q.QuizId == quizid
-                       select q).FirstOrDefault();
+                            join d in _context.User on q.UserId equals d.UserId
+                            where d.UserEmail == userEmail && q.QuizId == quizid
+                            select q).FirstOrDefault();
 
             userQuiz.IsStart = true;
             _context.SaveChanges();
