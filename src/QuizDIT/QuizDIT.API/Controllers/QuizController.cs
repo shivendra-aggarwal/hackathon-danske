@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Confluent.Kafka;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using QuizDIT.Data.EFCore;
 using QuizDIT.Domain;
 using QuizQueResponseProducer;
@@ -139,7 +141,18 @@ namespace QuizDIT.API.Controllers
         [HttpPost]
         public IActionResult PublishMessage(int userid, int quizid, int questionid, int responseid = 0)
         {
-            ResponseProducer.ProduceQuizQuestionReponse(userid, quizid, questionid, responseid);
+            var conf = new ProducerConfig
+            {
+                BootstrapServers = "localhost:9092"
+            };
+
+            Action<DeliveryReport<Null, string>> handler = r => Console.WriteLine(!r.Error.IsError ? $"Delivered message to {r.TopicPartitionOffset}" : $"Delivery Error: {r.Error.Reason}");
+
+            using (var p = new ProducerBuilder<Null, string>(conf).Build())
+            {
+
+                p.Produce("testtopic", new Message<Null, string> { Value = JsonConvert.SerializeObject(new QuizQueResponse() { QuizId = quizid, QuestionId = questionid, UserId = userid, ResponseId = responseid } )}, handler);
+            }
 
             return Ok();
         }
@@ -155,5 +168,13 @@ namespace QuizDIT.API.Controllers
         public void Delete(int id)
         {
         }
+    }
+
+    public class QuizQueResponse
+    {
+        public int UserId { get; set; }
+        public int QuizId { get; set; }
+        public int QuestionId { get; set; }
+        public int ResponseId { get; set; }
     }
 }
