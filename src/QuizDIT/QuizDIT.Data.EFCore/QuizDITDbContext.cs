@@ -19,7 +19,7 @@ namespace QuizDIT.Data.EFCore
         public DbSet<QuestionAnswerMapping> QuestionAnswerMapping { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<UserQuiz> UserQuiz { get; set; }
-        public DbSet<UserQuizResponse> UserQuizResponses { get; set; }
+        public DbSet<UserQuizResponse> UserQuizResponse { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
