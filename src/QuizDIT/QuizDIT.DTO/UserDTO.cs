@@ -17,6 +17,8 @@ namespace QuizDIT.Domain
 
         public string UserEmail { get; set; }
 
+        public bool IsStart { get; set; }
+
         public ICollection<UserQuizDTO> UserQuizes { get; set; }
     }
 }

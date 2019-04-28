@@ -22,6 +22,8 @@ namespace QuizDIT.Domain
 
         public User User { get; set; }
 
+        public bool IsStart { get; set; }
+
         public Quiz Quiz { get; set; }
 
         public ICollection<UserQuizResponse> UserQuizResponses { get; set; }

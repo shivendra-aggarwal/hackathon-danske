@@ -23,20 +23,26 @@ namespace QuizDIT.API.Controllers
         [HttpGet]
         public IEnumerable<QuizDTO> Get(string userEmail)
         {
+            return GetQuiz(userEmail);
+        }
+
+        private IEnumerable<QuizDTO> GetQuiz(string userEmail)
+        {
             var allquizes = _context.Quiz.ToList();
             var quizes = from q in _context.Quiz
                          join d in _context.UserQuiz on q.QuizId equals d.QuizId
                          join u in _context.User on d.UserId equals u.UserId
                          where u.UserEmail == userEmail
-                         select q;
+                         select d;
             var result = Mapper.Map<IEnumerable<Quiz>, IEnumerable<QuizDTO>>(allquizes.AsEnumerable()).ToList();
             result.ToList().ForEach(r =>
             {
                 if (quizes.Any(q => q.QuizId == r.QuizId))
                 {
                     r.IsRegistered = true;
+                    r.IsStart = quizes.FirstOrDefault(q => q.QuizId == r.QuizId).IsStart;
                 }
-
+                
                 r.Duration = 60;
             }
             );
@@ -104,7 +110,23 @@ namespace QuizDIT.API.Controllers
             _context.UserQuiz.Add(userQuiz);
             _context.SaveChanges();
 
-            return Ok();
+            var quizes = GetQuiz(userEmail);
+            return Ok(quizes.FirstOrDefault());
+        }
+
+        [HttpPut("StartQuiz")]
+        public IActionResult StartQuiz(string userEmail, int quizid)
+        {
+            var userQuiz = (from q in _context.UserQuiz
+                       join d in _context.User on q.UserId equals d.UserId
+                       where d.UserEmail == userEmail && q.QuizId == quizid
+                       select q).FirstOrDefault();
+
+            userQuiz.IsStart = true;
+            _context.SaveChanges();
+
+            var quizes = GetQuiz(userEmail);
+            return Ok(quizes.FirstOrDefault());
         }
 
 
