@@ -27,6 +27,8 @@ namespace QuizDIT.Domain
 
         public string QuizPassword { get; set; }
 
+        public int Duration { get; set; }
+
         public bool IsStart { get; set; }
         public bool IsRegistered { get; set; }
 

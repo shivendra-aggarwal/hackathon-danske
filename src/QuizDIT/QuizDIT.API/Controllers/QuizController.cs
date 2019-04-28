@@ -22,14 +22,23 @@ namespace QuizDIT.API.Controllers
         [HttpGet]
         public IEnumerable<QuizDTO> Get(string userEmail)
         {
-
+            var allquizes = _context.Quiz.ToList();
             var quizes = from q in _context.Quiz
                          join d in _context.UserQuiz on q.QuizId equals d.QuizId
                          join u in _context.User on d.UserId equals u.UserId
                          where u.UserEmail == userEmail
                          select q;
-            var result = Mapper.Map<IEnumerable<Quiz>, IEnumerable<QuizDTO>>(quizes.AsEnumerable()).ToList();
-            result.ToList().ForEach(r => r.IsStart = true);
+            var result = Mapper.Map<IEnumerable<Quiz>, IEnumerable<QuizDTO>>(allquizes.AsEnumerable()).ToList();
+            result.ToList().ForEach(r =>
+            {
+                if (quizes.Any(q => q.QuizId == r.QuizId))
+                {
+                    r.IsRegistered = true;
+                }
+
+                r.Duration = r.EndTime.Subtract(r.StartTime).Minutes;
+            }
+            );
             return result;
         }
 
@@ -41,10 +50,10 @@ namespace QuizDIT.API.Controllers
             if (userQuiz != null)
             {
                 var questions = (from q in _context.QuizQuestionMapping
-                                join quest in _context.Question on q.QuestionId equals quest.QuestionId
-                                where q.QuizId == userQuiz.QuizId
-                                orderby q.OrderId
-                                select quest).ToList();
+                                 join quest in _context.Question on q.QuestionId equals quest.QuestionId
+                                 where q.QuizId == userQuiz.QuizId
+                                 orderby q.OrderId
+                                 select quest).ToList();
                 Question question = null;
                 if (questionid == 0)
                 {
@@ -54,7 +63,7 @@ namespace QuizDIT.API.Controllers
                 {
                     question = questions.Where(q => q.QuestionId > questionid).FirstOrDefault();
 
-                    if(question == null)
+                    if (question == null)
                     {
                         return null;
                     }
@@ -77,7 +86,7 @@ namespace QuizDIT.API.Controllers
             return null;
         }
 
-        
+
         [Route("user/{userid}/quiz/{quizid}/question/{questionid}/response/{responseid}")]
         [HttpPost]
         public IActionResult PublishMessage(int userid, int quizid, int questionid, int responseid = 0)
