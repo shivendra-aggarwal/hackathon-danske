@@ -116,9 +116,9 @@ namespace QuizDIT.Data.EFCore
 
         public static void LoadQuestionMappings(QuizDITDbContext context)
         {
-            if (!context.QuizQuestionMappings.Any())
+            if (!context.QuizQuestionMapping.Any())
             {
-                context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
+                context.QuizQuestionMapping.Add(new Domain.QuizQuestionMapping()
                 {
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
@@ -127,10 +127,10 @@ namespace QuizDIT.Data.EFCore
                     ModifiedDateTime = System.DateTime.Now,
                     OrderId = 1,
                     QuestionId = 1,
-                    QuizId = 1
+                    QuizId = 1,
                 });
 
-                context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
+                context.QuizQuestionMapping.Add(new Domain.QuizQuestionMapping()
                 {
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
@@ -141,7 +141,7 @@ namespace QuizDIT.Data.EFCore
                     QuestionId = 2,
                     QuizId = 1
                 });
-                context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
+                context.QuizQuestionMapping.Add(new Domain.QuizQuestionMapping()
                 {
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
@@ -153,7 +153,7 @@ namespace QuizDIT.Data.EFCore
                     QuizId = 1
                 });
 
-                context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
+                context.QuizQuestionMapping.Add(new Domain.QuizQuestionMapping()
                 {
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,
@@ -164,7 +164,7 @@ namespace QuizDIT.Data.EFCore
                     QuestionId = 4,
                     QuizId = 1
                 });
-                context.QuizQuestionMappings.Add(new Domain.QuizQuestionMapping()
+                context.QuizQuestionMapping.Add(new Domain.QuizQuestionMapping()
                 {
                     CreatedBy = "Admin",
                     CreatedDateTime = System.DateTime.Now,

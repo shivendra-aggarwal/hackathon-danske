@@ -16,6 +16,9 @@ namespace QuizDIT.API
 
             CreateMap<Answer, AnswerDTO>();
             CreateMap<AnswerDTO, Answer>();
+
+            CreateMap<Question, QuestionDTO>();
+            CreateMap<QuestionDTO, Question>();
         }
     }
 }

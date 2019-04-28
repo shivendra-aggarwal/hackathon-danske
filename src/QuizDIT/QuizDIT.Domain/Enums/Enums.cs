@@ -16,7 +16,7 @@ namespace QuizDIT.Domain.Enums
         public enum QuestionType
         {
             MultipleChoice = 1,
-            ShortAnwer
+            ShortAnswer
         }
     }
 }
