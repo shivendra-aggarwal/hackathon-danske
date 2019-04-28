@@ -35,6 +35,8 @@ namespace QuizDIT.API
                 options.DefaultApiVersion = new ApiVersion(1, 0);
             });
 
+            services.AddCors(options => { options.AddPolicy("AllowAll", builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials(); }); });
+
             services.AddDbContext<QuizDITDbContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddMvc();
@@ -60,6 +62,7 @@ namespace QuizDIT.API
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Quiz DIT Managment Service 1.0");
                 });
             }
+            app.UseCors("AllowAll");
 
             app.UseMvc();
 

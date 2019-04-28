@@ -28,9 +28,6 @@ namespace QuizDIT.API.Controllers
                          join u in _context.User on d.UserId equals u.UserId
                          where u.UserEmail == userEmail
                          select q;
-            //var userQuizes = from uq in _context.UserQuiz
-            //                 join d in _context.User on uq.UserId equals d.UserId
-            //                 where d.user
             var result = Mapper.Map<IEnumerable<Quiz>, IEnumerable<QuizDTO>>(quizes.AsEnumerable()).ToList();
             result.ToList().ForEach(r => r.IsStart = true);
             return result;
