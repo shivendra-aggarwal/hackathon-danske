@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 
 namespace QuizDIT.Domain
 {
-    public class UserQuizResponse
+    public class UserQuizResponseDTO
     {
         public int UserQuizResponseId { get; set; }
 
         public int UserQuizId { get; set; }
+
+        public int QuestionId { get; set; }
 
         public bool IsCorrect { get; set; }
 

@@ -13,6 +13,8 @@ namespace QuizDIT.Domain
 
         public bool IsCorrect { get; set; }
 
+        public int QuestionId { get; set; }
+
         public UserQuiz UserQuiz { get; set; }
 
     }

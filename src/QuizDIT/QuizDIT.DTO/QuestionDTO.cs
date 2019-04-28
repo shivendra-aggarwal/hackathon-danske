@@ -9,7 +9,6 @@ namespace QuizDIT.Domain
     {
         public QuestionDTO()
         {
-            QuestionAnswerMappings = new HashSet<QuestionAnswerMappingDTO>();
             QuizQuestionMappings = new HashSet<QuizQuestionMappingDTO>();
             Answers = new HashSet<AnswerDTO>();
         }
@@ -23,8 +22,6 @@ namespace QuizDIT.Domain
         public int Penalty { get; set; }
 
         public ICollection<AnswerDTO> Answers { get; set; }
-
-        public ICollection<QuestionAnswerMappingDTO> QuestionAnswerMappings { get; set; }
 
         public ICollection<QuizQuestionMappingDTO> QuizQuestionMappings { get; set; }
     }
