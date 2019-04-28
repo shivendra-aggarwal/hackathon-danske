@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QuizDIT.Data.EFCore;
 using QuizDIT.Domain;
+using QuizQueResponseProducer;
 
 namespace QuizDIT.API.Controllers
 {
@@ -31,6 +32,10 @@ namespace QuizDIT.API.Controllers
                 quizResponse.UserQuizId = userQuiz.UserQuizId;
                 quizResponse.IsDeleted = false;
                 quizResponse.QuestionId = questionid;
+                quizResponse.CreatedBy = "Admin";
+                quizResponse.ModifiedBy = "Admin";
+                quizResponse.CreatedDateTime = DateTime.Now;
+                quizResponse.ModifiedDateTime = DateTime.Now;
 
                 _context.Add(quizResponse);
 
@@ -39,6 +44,15 @@ namespace QuizDIT.API.Controllers
             }
 
 
+            return Ok();
+        }
+
+        [Route("user/{userid}/quiz/{quizid}/question/{questionid}/response/{responseid}")]
+        [HttpPost]
+        public IActionResult PublishMessage(int userid, int quizid, int questionid, int responseid)
+        {
+            ResponseProducer.ProduceQuizQuestionReponse(userid, quizid, questionid, responseid);
+            
             return Ok();
         }
     }
