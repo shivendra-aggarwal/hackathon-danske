@@ -28,4 +28,10 @@
     <ProjectReference Include="..\QuizDIT.DTO\QuizDIT.DTO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="QuizQueResponseProducer">
+      <HintPath>Kafka_Reference\QuizQueResponseProducer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
