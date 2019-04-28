@@ -79,6 +79,7 @@ namespace QuizDIT.API.Controllers
                 var questionDTO = Mapper.Map<Question, QuestionDTO>(question);
                 if (questionDTO != null)
                 {
+                    questionDTO.QuizId = userQuiz.QuizId;
                     questionDTO.Answers = (from m in _context.QuestionAnswerMapping
                                            join a in _context.Answer on m.AnswerId equals a.AnswerId
                                            where m.QuestionId == questionDTO.QuestionId

@@ -21,6 +21,8 @@ namespace QuizDIT.Domain
         public int Award { get; set; }
         public int Penalty { get; set; }
 
+        public int QuizId { get; set; }
+
         public ICollection<AnswerDTO> Answers { get; set; }
 
         public ICollection<QuizQuestionMappingDTO> QuizQuestionMappings { get; set; }
